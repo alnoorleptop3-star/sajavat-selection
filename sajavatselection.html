@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sajavat Selection | Official Jockey Style Showroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #132337;
+    --navy-light: #1c334d;
+    --red: #e31c25;
+    --red-dark: #c4121a;
+    --white: #ffffff;
+    --off-white: #f5f7fa;
+    --gray: #6b7c93;
+    --light-gray: #e8edf3;
+    --border: #d0d8e4;
+    --shadow: 0 8px 30px rgba(10,22,40,0.12);
+    --radius: 6px;
+    --transition: 0.3s ease;
+  }
+
+  [data-theme="dark"] {
+    --navy: #060d18;
+    --navy-mid: #0d1a2b;
+    --navy-light: #152638;
+    --off-white: #0a1628;
+    --white: #132337;
+    --gray: #8a9bb0;
+    --light-gray: #1c334d;
+    --border: #243b55;
+    --shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--off-white);
+    color: var(--navy);
+    line-height: 1.55;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  /* ========== TOP BAR ========== */
+  .top-bar {
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 8px 16px;
+  }
+  .top-bar span { color: var(--red); }
+
+  /* ========== NAV ========== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 3px solid var(--red);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--navy);
+  }
+  .logo-mark {
+    background: var(--red);
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    width: 42px; height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  .logo-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .logo-text span { color: var(--red); font-weight: 500; font-size: 0.75rem; display: block; letter-spacing: 2px; margin-top: -2px; }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2px;
+  }
+  .nav-links a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: all var(--transition);
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--red);
+    background: rgba(227,28,37,0.06);
+  }
+
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
+  .theme-btn, .menu-btn {
+    background: var(--light-gray);
+    border: none;
+    width: 38px; height: 38px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition);
+  }
+  .theme-btn:hover, .menu-btn:hover { background: var(--border); }
+  .menu-btn { display: none; }
+
+  .mobile-menu {
+    display: none;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+    flex-direction: column;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    border-radius: 4px;
+  }
+  .mobile-menu a:hover { background: rgba(227,28,37,0.06); color: var(--red); }
+
+  /* ========== HERO ========== */
+  .hero {
+    background: var(--navy);
+    color: #fff;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 480px; height: 480px;
+    background: var(--red);
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: -60px; bottom: -100px;
+    width: 360px; height: 360px;
+    background: var(--red);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+  .hero-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--red); }
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 480px;
+    margin-bottom: 28px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition);
+  }
+  .btn-red {
+    background: var(--red);
+    color: #fff;
+  }
+  .btn-red:hover {
+    background: var(--red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(227,28,37,0.35);
+  }
+  .btn-outline-white {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+  .btn-outline-white:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-card {
+    background: var(--navy-mid);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+    max-width: 320px;
+  }
+  .hero-card .big-icon { font-size: 4.5rem; margin-bottom: 12px; }
+  .hero-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hero-card p { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
+
+  /* ========== SECTION ========== */
+  section {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 70px 24px;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-header .tag {
+    display: inline-block;
+    background: rgba(227,28,37,0.1);
+    color: var(--red);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+  .section-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--navy);
+  }
+  [data-theme="dark"] .section-header h2 { color: #fff; }
+  .section-header p {
+    color: var(--gray);
+    margin-top: 8px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ========== FILTER ========== */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: var(--white);
+    color: var(--navy);
+    outline: none;
+    transition: border var(--transition);
+  }
+  .search-box input:focus { border-color: var(--red); }
+  .search-box svg {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+  }
+  .filter-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    padding: 9px 16px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .chip:hover, .chip.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+
+  /* ========== PRODUCT GRID ========== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .product-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: transparent;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .product-img-wrap {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f0f2f5;
+  }
+  [data-theme="dark"] .product-img-wrap { background: var(--navy-light); }
+  .product-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+
+  .badge-store {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  .badge-store::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: #2ecc71;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .product-body { padding: 16px 18px 20px; }
+  .product-brand {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .product-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    color: var(--navy);
+  }
+  [data-theme="dark"] .product-name { color: #fff; }
+
+  .product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .meta-tag {
+    background: var(--light-gray);
+    color: var(--gray);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .colors { display: flex; gap: 5px; margin-bottom: 14px; }
+  .color-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+  }
+
+  .btn-whatsapp {
+    width: 100%;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    padding: 11px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: all var(--transition);
+  }
+  .btn-whatsapp:hover {
+    background: #1da851;
+    transform: translateY(-1px);
+  }
+
+  /* ========== GALLERY ========== */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .gallery-item {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .gallery-item:hover img { transform: scale(1.07); }
+  .gallery-item::after {
+    content: '＋';
+    position: absolute;
+    inset: 0;
+    background: rgba(10,22,40,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,22,40,0.95);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  /* ========== ABOUT ========== */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .about-text h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: var(--navy);
+  }
+  [data-theme="dark"] .about-text h3 { color: #fff; }
+  .about-text p { color: var(--gray); margin-bottom: 12px; font-size: 0.95rem; }
+  .about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .feat-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 4px;
+  }
+  .feat-item strong {
+    display: block;
+    color: var(--red);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .feat-item span { font-size: 0.85rem; color: var(--gray); }
+
+  .about-visual {
+    background: var(--navy);
+    border-radius: 8px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    background: var(--red);
+    border-radius: 50%;
+    opacity: 0.2;
+    top: -40px; right: -40px;
+  }
+  .about-visual .big { font-size: 4rem; margin-bottom: 8px; }
+  .about-visual h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+
+  /* ========== REVIEWS ========== */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 6px;
+  }
+  .stars { color: var(--red); letter-spacing: 2px; margin-bottom: 10px; font-size: 0.95rem; }
+  .review-card p {
+    color: var(--gray);
+    font-size: 0.92rem;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .reviewer { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .reviewer strong { font-size: 0.88rem; }
+  .reviewer small { color: var(--gray); font-size: 0.75rem; }
+
+  /* ========== MAP / VISIT ========== */
+  .map-container {
+    border-radius: 6px;
+    overflow: hidden;
+    height: 360px;
+    border: 1px solid var(--border);
+  }
+  .map-container iframe { width: 100%; height: 100%; border: 0; }
+  .store-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 22px;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .info-card .icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .info-card h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+  .info-card p { color: var(--gray); font-size: 0.88rem; }
+
+  /* ========== CONTACT ========== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .contact-form {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 6px;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+    margin-bottom: 5px;
+  }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    background: var(--off-white);
+    color: var(--navy);
+    outline: none;
+    transition: border var(--transition);
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--red); }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+
+  .whatsapp-cta {
+    background: var(--navy);
+    color: #fff;
+    padding: 36px 28px;
+    border-radius: 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .whatsapp-cta .wa-icon { font-size: 3rem; margin-bottom: 12px; }
+  .whatsapp-cta h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .whatsapp-cta p { color: rgba(255,255,255,0.7); font-size: 0.92rem; margin-bottom: 22px; }
+  .whatsapp-cta .btn { background: #25D366; color: #fff; }
+  .whatsapp-cta .btn:hover { background: #1da851; }
+
+  /* ========== INSTAGRAM ========== */
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+  .insta-item {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .insta-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+  }
+  .insta-item:hover img { opacity: 0.8; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--navy);
+    color: #fff;
+    padding: 50px 24px 24px;
+    margin-top: 20px;
+  }
+  .footer-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 36px;
+  }
+  .footer-brand .logo-mark {
+    display: inline-flex;
+    margin-bottom: 12px;
+  }
+  .footer-brand h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .footer-brand p { color: rgba(255,255,255,0.55); font-size: 0.88rem; }
+  .footer-col h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+  .footer-col a, .footer-col p {
+    display: block;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+    transition: color var(--transition);
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1320px;
+    margin: 36px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+  }
+  
+
+  /* ========== PAGE SECTIONS ========== */
+  .page-section { display: none; }
+  .page-section.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .menu-btn { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .hero-btns { justify-content: center; }
+    .hero-visual { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .insta-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .about-features { grid-template-columns: 1fr; }
+    .hero { min-height: auto; }
+  }
+
+
+.floating-video{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:280px;
+    z-index:9999;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+    background:#000;
+}
+
+.floating-video video{
+    width:100%;
+    display:block;
+}
+
+.close-btn{
+    position:absolute;
+    top:5px;
+    right:5px;
+    border:none;
+    background:rgba(0,0,0,.6);
+    color:#fff;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    cursor:pointer;
+}
+</style>
+</head>
+
+  <!-- Reviews remain the same -->
+  
+<!-- TOP BAR -->
+<div class="top-bar">
+  <h3>WE ARE MANUFCTURERS</h3>
+  FREE IN-STORE CONSULTATION · <span>  · PREMIUMINNERWEAR & NIGHTWEAR</span> · OPEN DAILY 10AM – 8:30PM
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo" onclick="showPage('home')">
+      <div class="logo-mark">SS</div>
+      <div class="logo-text">Sajavat<span>Selection Showroom</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" data-page="home" class="active">Home</a></li>
+      <li><a href="#collections" data-page="collections">Collections</a></li>
+      <li><a href="#mens" data-page="mens">Men's</a></li>
+      <li><a href="#womens" data-page="womens">Women's</a></li>
+      <li><a href="#nightsuits" data-page="nightsuits">Nightwear</a></li>
+      <li><a href="#gallery" data-page="gallery">Gallery</a></li>
+      <li><a href="#about" data-page="about">About</a></li>
+      <li><a href="#visit" data-page="visit">Visit</a></li>
+      <li><a href="#contact" data-page="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">☾</button>
+      <button class="menu-btn" onclick="toggleMobile()">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="showPage('home');toggleMobile()">Home</a>
+  <a href="#collections" onclick="showPage('collections');toggleMobile()">Collections</a>
+  <a href="#mens" onclick="showPage('mens');toggleMobile()">Men's Innerwear</a>
+  <a href="#womens" onclick="showPage('womens');toggleMobile()">Women's Innerwear</a>
+  <a href="#nightsuits" onclick="showPage('nightsuits');toggleMobile()">Night Suits & Gowns</a>
+  <a href="#gallery" onclick="showPage('gallery');toggleMobile()">Product Gallery</a>
+  <a href="#about" onclick="showPage('about');toggleMobile()">About Our Store</a>
+  <a href="#visit" onclick="showPage('visit');toggleMobile()">Visit Our Store</a>
+  <a href="#contact" onclick="showPage('contact');toggleMobile()">Contact & WhatsApp</a>
+</div>
+
+<!-- ========== HOME ========== -->
+<section id="home" class="page-section active" style="padding:0;max-width:none;">
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">Official Style Showroom</div>
+        <h1>Comfort That<br><span>Performs</span></h1>
+        <p>Experience the trusted quality of premium innerwear & nightwear. Curated collection available exclusively at our physical showroom.</p>
+        <div class="hero-btns">
+          <a href="#collections" class="btn btn-red" onclick="showPage('collections')">Shop Collections</a>
+          <a href="#visit" class="btn btn-outline-white" onclick="showPage('visit')">Locate Store</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="big-icon">👙 🩱</div>
+          <h3>Premium Fit</h3>
+          <p>Engineered for all-day comfort & support — just like the brands you trust.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1320px;margin:0 auto;padding:70px 24px;">
+    <div class="section-header">
+      <div class="tag">Featured</div>
+      <h2>Best Sellers</h2>
+      <p>Top picks available right now in our showroom</p>
+    </div>
+    <div class="product-grid" id="featuredGrid"></div>
+  </div>
+</section>
+
+<!-- ========== COLLECTIONS ========== -->
+<section id="collections" class="page-section">
+  <div class="section-header">
+    <div class="tag">Browse</div>
+    <h2>All Collections</h2>
+    <p>Complete range of premium innerwear & nightwear</p>
+  </div>
+  <div class="filter-bar">
+    <div class="search-box">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()">
+    </div>
+    <div class="filter-chips">
+      <button class="chip active" data-filter="all" onclick="setFilter('all')">All</button>
+      <button class="chip" data-filter="mens" onclick="setFilter('mens')">Men's</button>
+      <button class="chip" data-filter="womens" onclick="setFilter('womens')">Women's</button>
+      <button class="chip" data-filter="nightsuits" onclick="setFilter('nightsuits')">Nightwear</button>
+    </div>
+  </div>
+  <div class="product-grid" id="allProducts"></div>
+</section>
+
+<!-- ========== MEN'S ========== -->
+<section id="mens" class="page-section">
+  <div class="section-header">
+    <div class="tag">Men</div>
+    <h2>Men's Innerwear</h2>
+    <p>Performance fabrics. Everyday comfort. Perfect fit.</p>
+  </div>
+  <div class="product-grid" id="mensGrid"></div>
+</section>
+
+<!-- ========== WOMEN'S ========== -->
+<section id="womens" class="page-section">
+  <div class="section-header">
+    <div class="tag">Women</div>
+    <h2>Women's Innerwear</h2>
+    <p>Support, softness & style for every day</p>
+  </div>
+  <div class="product-grid" id="womensGrid"></div>
+</section>
+
+<!-- ========== NIGHTWEAR ========== -->
+<section id="nightsuits" class="page-section">
+  <div class="section-header">
+    <div class="tag">Sleep</div>
+    <h2>Night Suits & Gowns</h2>
+    <p>Soft, breathable nightwear for complete rest</p>
+  </div>
+  <div class="product-grid" id="nightGrid"></div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery" class="page-section">
+  <div class="section-header">
+    <div class="tag">Lookbook</div>
+    <h2>Product Gallery</h2>
+    <p>A closer look at our showroom collection</p>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="page-section">
+  <div class="section-header">
+    <div class="tag">Our Story</div>
+    <h2>About the Showroom</h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <h3>Sajavat Selection</h3>
+       <p  textcolor="red">We are also sale big size from big size from 3XL to 7XL.</l></p>
+      <p>And we also tailor clothes to fit your body comfortably</p>
+      <p>We bring you a curated showroom experience focused on premium innerwear and nightwear. Every piece is selected for quality fabric, superior fit and lasting comfort — the same standards you expect from trusted performance brands.</p>
+      <p>Visit us to feel the difference. Our team provides personalised guidance so you leave with the perfect fit every time.</p>
+      <div class="about-features">
+        <div class="feat-item"><strong>Premium Brands</strong><span>Trusted quality labels only</span></div>
+        <div class="feat-item"><strong>Expert Fit Advice</strong><span>Personalised sizing help</span></div>
+        <div class="feat-item"><strong>Wide Range</strong><span>Men's · Women's · Nightwear</span></div>
+        <div class="feat-item"><strong>In-Store Experience</strong><span>Touch & feel before you buy</span></div>
+      </div>
+    </div>
+
+    <!-- Shop Photo (main) -->
+    <div class="about-visual" style="padding:0; overflow:hidden;">
+      <img src="YOUR_SHOP_PHOTO_1.jpg" 
+           alt="Sajavat Selection Showroom" 
+           style="width:100%; height:100%; object-fit:cover;"
+           onerror="this.src='images/s1.jpeg'">
+    </div>
+  </div>
+
+  <!-- Extra Shop Photos Gallery -->
+  <div style="margin-top:50px;">
+    <div class="section-header">
+      <div class="tag">Our Store</div>
+      <h2>Inside the Showroom</h2>
+      <p>A look at our store</p>
+    </div>
+
+    <div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+      <!-- Photo 1 -->
+      <div class="gallery-item" onclick="openLightbox('YOUR_SHOP_PHOTO_1.jpg')">
+        <img src="images/p2.jpeg" alt="Shop Interior" 
+             onerror="this.src='images/p2.jpeg'">
+      </div>
+
+      <!-- Photo 2 3 4 5 6 7-->
+      
+      <div class="gallery-item" onclick="openLightbox('YOUR_SHOP_PHOTO_1.jpg')">
+        <img src="images/s2.jpeg" alt="Shop Interior" 
+             onerror="this.src='images/s2.jpeg'">
+      </div><div class="gallery-item" onclick="openLightbox('YOUR_SHOP_PHOTO_1.jpg')">
+        <img src="images/s3.jpeg" alt="Shop Interior" 
+             onerror="this.src='images/s3.jpeg'">
+      </div>
+      <div class="gallery-item" onclick="openLightbox('YOUR_SHOP_PHOTO_1.jpg')">
+        <img src="images/s4.jpeg" alt="Shop Interior" 
+             onerror="this.src='images/s4.jpeg'">
+      </div>
+      <div class="gallery-item" onclick="openLightbox('YOUR_SHOP_PHOTO_1.jpg')">
+        <img src="images/s5.jpeg" alt="Shop Interior" 
+             onerror="this.src='images/s5.jpeg'">
+      </div>
+      <div class="gallery-item" onclick="openLightbox('YOUR_SHOP_PHOTO_1.jpg')">
+        <img src="images/s6.jpeg" alt="Shop Interior" 
+             onerror="this.src='images/s6.jpeg'">
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Reviews remain the same -->
+  <div style="margin-top:60px;">
+    <div class="section-header">
+      <div class="tag">Testimonials</div>
+      <h2>What Customers Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Exactly the quality I expected. The fit guidance was excellent and the night suits are incredibly soft."</p>
+        <div class="reviewer">
+          <div class="avatar">P</div>
+          <div><strong>Priya S.</strong><br><small>Verified Buyer</small></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Best men's innerwear selection in the area. Great variety and the staff really knows their products."</p>
+        <div class="reviewer">
+          <div class="avatar">R</div>
+          <div><strong>Rahul M.</strong><br><small>Verified Buyer</small></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Loved the women's collection. Soft fabrics, beautiful designs and very helpful team."</p>
+        <div class="reviewer">
+          <div class="avatar">A</div>
+          <div><strong>Anjali K.</strong><br><small>Verified Buyer</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+
+<!-- ========== VISIT ========== -->
+<section id="visit" class="page-section">
+  <div class="section-header">
+    <div class="tag">Location</div>
+    <h2>Visit Our Showroom</h2>
+    <p>Come experience the collection in person</p>
+  </div>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.5365016926835!2d72.9638481744042!3d22.55902907950132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e4fd1a4880737%3A0xd42b36bab8346dff!2sSajavat%20selection!5e0!3m2!1sen!2sin!4v1785147893467!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    
+    </iframe>
+  </div>
+  <div class="store-info">
+    <div class="info-card">
+      <div class="icon">📍</div>
+      <h4>Address</h4>
+      <p>G 3, mhnish Market Road<br>Anand, Gujrat– 388001</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🕐</div>
+      <h4>Hours</h4>
+      <p>Mon – Sat: 10:00 AM – 8:30 PM<br>Sunday: 11:00 AM – 7:00 PM</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">📞</div>
+      <h4>Phone</h4>
+      <p>+91 7434960399 <br>Call or WhatsApp</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="page-section">
+  <div class="section-header">
+    <div class="tag">Get in Touch</div>
+    <h2>Contact & WhatsApp</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-form">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="cName" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp</label>
+        <input type="tel" id="cPhone" placeholder="+91 7434960399">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="cMsg" placeholder="Tell us what you're looking for..."></textarea>
+      </div>
+      <button class="btn btn-red" style="width:100%" onclick="sendEnquiry()">Send Enquiry via WhatsApp</button>
+    </div>
+    <div class="whatsapp-cta">
+      <div class="wa-icon">💬</div>
+      <h3>Chat on WhatsApp</h3>
+      <p>Quick answers on sizes, stock & new arrivals. We're just a message away.</p>
+      <a href="https://wa.me/917434960399?text=Hi%20Sajavat%20Selection!%20I%20would%20like%20to%20enquire%20about%20your%20products." target="_blank" class="btn">Open WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section style="max-width:1320px;margin:0 auto;padding:40px 24px 70px;" id="instagramSection">
+  <div class="section-header">
+    <div class="tag">Social</div>
+    <h2>@sajavatselection</h2>
+  </div>
+  <div class="insta-grid" id="instaGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-mark">SS</div>
+      <h3>Sajavat Selection</h3>
+      <p>Premium innerwear & nightwear showroom. Quality you can feel. Comfort you can trust.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#collections" onclick="showPage('collections')">Collections</a>
+      <a href="#mens" onclick="showPage('mens')">Men's Innerwear</a>
+      <a href="#womens" onclick="showPage('womens')">Women's Innerwear</a>
+      <a href="#nightsuits" onclick="showPage('nightsuits')">Nightwear</a>
+    </div>
+    <div class="footer-col">
+      <h4>Store</h4>
+      <a href="#about" onclick="showPage('about')">About Us</a>
+      <a href="#visit" onclick="showPage('visit')">Visit Us</a>
+      <a href="#gallery" onclick="showPage('gallery')">Gallery</a>
+      <a href="#contact" onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <p>📞 +91 7434960399</p>
+      <p>📍 Main Market Road</p>
+      <a href="https://wa.me/917434960399" target="_blank">WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Sajavat Selection Showroom. All rights reserved.
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close">×</button>
+  <img id="lightboxImg" src="" alt="Product">
+</div>
+
+<script>
+const products = [  
+  { id:5, name:"Lace Detail Brief Set", brand:"Amante", category:"womens", sizes:"S, M, L", colors:["#ffc0cb","#fff0f5","#2d2d2d"], fabric:"Lace & Cotton", img:"images/3.jpeg" },
+  { id:6, name:"Everyday Soft Hipster", brand:"Enamor", category:"womens", sizes:"S, M, L, XL", colors:["#f8e8e8","#e0c9c9","#4a4a4a"], fabric:"Cotton Elastane", img:"images/a6.jpg" },
+  { id:7, name:"Satin Night Gown – Rose", brand:"Clovia", category:"nightsuits", sizes:"S, M, L", colors:["#e8b4bc","#d4a5a5","#c9a0a0"], fabric:"Satin", img:"images/a5.webp" },
+  { id:8, name:"Cotton Night Suit Set", brand:"Zivame", category:"nightsuits", sizes:"S, M, L, XL", colors:["#a8dadc","#457b9d","#1d3557"], fabric:"Soft Cotton", img:"images/a4.webp" },
+
+  { id:1, name:"Classic Cotton Briefs Pack", brand:"Jockey", category:"womens", sizes:"S, M, L, XL, XXL", colors:["#1a1a2e","#2d3436","#636e72"], fabric:"100% Cotton", img:"images/a10.webp" },
+  { id:2, name:"Premium Trunks – Soft Modal", brand:"Van Heusen", category:"mens", sizes:"M, L, XL", colors:["#2c3e50","#34495e","#7f8c8d"], fabric:"Modal Blend", img:"images/a9.webp" },
+  { id:3, name:"Everyday Comfort Boxers", brand:"Hanes", category:"mens", sizes:"S, M, L, XL", colors:["#ecf0f1","#bdc3c7","#95a5a6"], fabric:"Cotton Stretch", img:"images/m1.webp" },
+  { id:4, name:"Seamless Wire-Free Bra", brand:"Triumph", category:"womens", sizes:"32B – 40D", colors:["#f5e6d3","#e8d5c4","#2c2c2c"], fabric:"Microfibre", img:"images/5.jpeg" },
+  { id:28, name:"Nursing Maternity Bra", brand:"Sajavat Selection", category:"womens", sizes:"34B, 36B, 38B, 40B", colors:["#ffffff","#d3d3d3","#ffc0cb"], fabric:"Soft Cotton", img:"images/w11.webp" },
+{ id:29, name:"period panty", brand:"Alishan", category:"womens", sizes:"S, M, L", colors:["#ffc0cb","#fff0f5","#2d2d2d"], fabric:"Lace & Cotton", img:"images/w16.webp" },
+{ id:30, name:"bridal night Set", brand:"Sajavat Selection", category:"nightsuits", sizes:"S, M, L", colors:["#ffc0cb","#fff0f5","#2d2d2d"], fabric:"Lace & Cotton", img:"images/w17.webp" },
+  { id:9, name:"Printed Lounge Set", brand:"PrettySecrets", category:"nightsuits", sizes:"M, L, XL", colors:["#f1faee","#a8dadc","#457b9d"], fabric:"Cotton Jersey", img:"images/a3.webp" },
+  { id:10, name:"Thermal Innerwear Set", brand:"Thermals Pro", category:"mens", sizes:"M, L, XL, XXL", colors:["#2c3e50","#1a252f"], fabric:"Thermal Cotton", img:"images/a2.webp" },
+  { id:11, name:"Full Coverage T-Shirt Bra", brand:"Jockey", category:"womens", sizes:"32A – 42C", colors:["#fff","#f5f5f5","#2c2c2c"], fabric:"Cotton Blend", img:"images/a1.webp" },
+  { id:12, name:"Silk Touch Night Shirt", brand:"Clovia", category:"nightsuits", sizes:"S, M, L", colors:["#fce4ec","#f8bbd0","#f48fb1"], fabric:"Silk Touch",  img:"images/1.jpeg" },
+ { id:13, name:"Thermal Innerwear Set", brand:"Thermals Pro", category:"womens", sizes:"M, L, XL, XXL", colors:["#2c3e50","#1a252f"], fabric:"Thermal Cotton", img:"images/a2.webp" },
+{ id:14, name:"Soft Cotton Bikini Set", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L, XL", colors:["#ffb6c1","#ffffff","#000000"], fabric:"100% Cotton", img:"images/w10.webp" },
+{ id:15, name:"Floral Comfort Panty", brand:"Sajavat Selection", category:"womens", sizes:"M, L, XL", colors:["#f8c8dc","#87ceeb","#ffffff"], fabric:"Cotton Blend", img:"images/w9.webp" },
+{ id:16, name:"Everyday Seamless Brief", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L", colors:["#f5f5dc","#2d2d2d","#ffc0cb"], fabric:"Microfiber", img:"images/w8.webp" },
+{ id:17, name:"Elegant Lace Panty", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L, XL", colors:["#800020","#000000","#fff0f5"], fabric:"Premium Lace", img:"images/w7.webp" },
+{ id:18, name:"Classic Cotton Brief", brand:"Sajavat Selection", category:"womens", sizes:"M, L, XL", colors:["#ffffff","#d3d3d3","#000080"], fabric:"Combed Cotton", img:"images/w6.webp" },
+{ id:19, name:"Silky Comfort Hipster", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L", colors:["#ff69b4","#dda0dd","#ffffff"], fabric:"Silky Cotton Blend", img:"images/w5.jpg" },
+{ id:20, name:"Daily Wear Panty Pack of 3", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L, XL", colors:["#ffffff","#ffb6c1","#98fb98"], fabric:"Breathable Cotton", img:"images/w4.webp" },
+{ id:21, name:"Stretch Fit Bikini Brief", brand:"Sajavat Selection", category:"womens", sizes:"M, L, XL", colors:["#87cefa","#ffffff","#000000"], fabric:"Cotton Spandex", img:"images/w2.webp" },
+{ id:22, name:"Premium Soft Brief", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L", colors:["#ffe4e1","#c0c0c0","#2d2d2d"], fabric:"Modal Cotton", img:"images/w2.webp" },
+{ id:23, name:"Luxury Lace Bikini", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L, XL", colors:["#ff1493","#ffffff","#000000"], fabric:"Lace & Microfiber", img:"images/w1.webp" },
+{ id:24, name:"Sponge Cup Bra", brand:"Sajavat Selection", category:"womens", sizes:"32B, 34B, 36B, 38B", colors:["#f5c6d6","#ffffff","#000000"], fabric:"Cotton & Foam", img:"images/w15.webp" },
+{ id:25, name:"Sports Support Bra", brand:"Sajavat Selection", category:"womens", sizes:"S, M, L, XL", colors:["#000000","#808080","#ff69b4"], fabric:"Polyester & Spandex", img:"images/w14.webp" },
+{ id:26, name:"Full Coverage Bra", brand:"Sajavat Selection", category:"womens", sizes:"34B, 36B, 38C, 40C", colors:["#f5deb3","#ffffff","#800020"], fabric:"Cotton Blend", img:"images/w13.webp" },
+{ id:27, name:"Front Open Bra", brand:"Sajavat Selection", category:"womens", sizes:"32B, 34B, 36B, 38B", colors:["#ffe4e1","#000080","#2d2d2d"], fabric:"Nylon & Spandex", img:"images/w12.webp" },
+
+];
+
+function createCard(p, delay=0) {
+  const dots = p.colors.map(c => `<span class="color-dot" style="background:${c}"></span>`).join('');
+  return `<div class="product-card" data-category="${p.category}" data-name="${p.name.toLowerCase()}" style="animation-delay:${delay}s">
+    <div class="product-img-wrap" onclick="openLightbox('${p.img}')">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/500x500/0a1628/e31c25?text=${encodeURIComponent(p.name)}'">
+      <span class="badge-store">In Store</span>
+    </div>
+    <div class="product-body">
+      <div class="product-brand">${p.brand}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-meta">
+        <span class="meta-tag">${p.sizes}</span>
+        <span class="meta-tag">${p.fabric}</span>
+      </div>
+      <div class="colors">${dots}</div>
+      <button class="btn-whatsapp" onclick="enquireWhatsApp('${p.name}','${p.brand}')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enquire on WhatsApp
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderProducts() {
+  document.getElementById('featuredGrid').innerHTML = products.slice(0,4).map((p,i)=>createCard(p,i*0.07)).join('');
+  document.getElementById('allProducts').innerHTML = products.map((p,i)=>createCard(p,i*0.04)).join('');
+  document.getElementById('mensGrid').innerHTML = products.filter(p=>p.category==='mens').map((p,i)=>createCard(p,i*0.07)).join('');
+  document.getElementById('womensGrid').innerHTML = products.filter(p=>p.category==='womens').map((p,i)=>createCard(p,i*0.07)).join('');
+  document.getElementById('nightGrid').innerHTML = products.filter(p=>p.category==='nightsuits').map((p,i)=>createCard(p,i*0.07)).join('');
+  document.getElementById('galleryGrid').innerHTML = products.map(p=>`<div class="gallery-item" onclick="openLightbox('${p.img}')">< src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x400/0a1628/e31c25?text=Sajavat'"></div>`).join('');
+  document.getElementById('instaGrid').innerHTML = products.slice(0,6).map(p=>`<div class="insta-item"><img src="${p.img}" alt="IG" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300/0a1628/e31c25?text=@sajavat'"></div>`).join('');
+}
+
+function showPage(id) {
+  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
+  const t = document.getElementById(id);
+  if(t) t.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active', a.dataset.page===id));
+  document.getElementById('instagramSection').style.display = (id==='home') ? 'block' : 'none';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); showPage(a.dataset.page); });
+});
+function toggleMobile(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+function toggleTheme(){
+  const b = document.body;
+  const dark = b.getAttribute('data-theme')==='dark';
+  b.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.querySelector('.theme-btn').textContent = dark ? '☾' : '☀';
+}
+
+let currentFilter = 'all';
+function setFilter(cat){
+  currentFilter = cat;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.filter===cat));
+  filterProducts();
+}
+function filterProducts(){
+  const q = (document.getElementById('searchInput')?.value||'').toLowerCase();
+  document.querySelectorAll('#allProducts .product-card').forEach(card=>{
+    const matchCat = currentFilter==='all' || card.dataset.category===currentFilter;
+    const matchSearch = !q || card.dataset.name.includes(q);
+    card.style.display = (matchCat && matchSearch) ? 'block' : 'none';
+  });
+}
+
+function enquireWhatsApp(name, brand){
+  const msg = encodeURIComponent(`Hi Sajavat Selection! 👋\nI'm interested in:\n*${name}* by ${brand}\nPlease share availability & price. Thank you!`);
+  window.open(`https://wa.me/917434960399?text=${msg}`,'_blank');
+}
+function sendEnquiry(){
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  const msg = document.getElementById('cMsg').value.trim();
+  const text = encodeURIComponent(`Hi Sajavat Selection!\nName: ${name||'Customer'}\nPhone: ${phone||'-'}\nMessage: ${msg||'I would like to know more about your products.'}`);
+  window.open(`https://wa.me/917434960399?text=${text}`,'_blank');
+}
+
+function openLightbox(src){ document.getElementById('lightboxImg').src=src; document.getElementById('lightbox').classList.add('open'); }
+function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
+
+renderProducts();
+showPage('home');
+</script>
+</body>
+</html>
